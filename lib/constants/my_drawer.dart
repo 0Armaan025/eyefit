@@ -1,8 +1,12 @@
 import 'package:eyefit/constants/constants.dart';
+import 'package:eyefit/screens/eye_mission.dart';
 import 'package:eyefit/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+
+import '../screens/eye_test.dart';
+import '../screens/meditation_screen.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({Key? key}) : super(key: key);
@@ -61,17 +65,22 @@ class MyDrawer extends StatelessWidget {
             thickness: 0.6,
             color: Colors.white,
           ),
-          ListTile(
-            leading: Icon(
-              Icons.center_focus_strong_outlined,
-              color: Colors.white,
-            ),
-            title: Text(
-              'Eyes Misson',
-              style: GoogleFonts.poppins(
+          InkWell(
+            onTap: () {
+              moveScreen(context, false, EyeMissionScreen());
+            },
+            child: ListTile(
+              leading: Icon(
+                Icons.center_focus_strong_outlined,
                 color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.w200,
+              ),
+              title: Text(
+                'Eyes Misson',
+                style: GoogleFonts.poppins(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w200,
+                ),
               ),
             ),
           ),
@@ -80,17 +89,22 @@ class MyDrawer extends StatelessWidget {
             thickness: 0.6,
             color: Colors.white,
           ),
-          ListTile(
-            leading: Icon(
-              Icons.question_answer_outlined,
-              color: Colors.white,
-            ),
-            title: Text(
-              'Ask or share with others',
-              style: GoogleFonts.poppins(
+          InkWell(
+            onTap: () {
+              moveScreen(context, false, MeditationScreen());
+            },
+            child: ListTile(
+              leading: Icon(
+                Icons.remove_red_eye_rounded,
                 color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.w200,
+              ),
+              title: Text(
+                'Meditation time',
+                style: GoogleFonts.poppins(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w200,
+                ),
               ),
             ),
           ),
@@ -99,36 +113,22 @@ class MyDrawer extends StatelessWidget {
             thickness: 0.6,
             color: Colors.white,
           ),
-          ListTile(
-            leading: Icon(
-              Icons.leaderboard,
-              color: Colors.white,
-            ),
-            title: Text(
-              'Leaderboard',
-              style: GoogleFonts.poppins(
+          InkWell(
+            onTap: () {
+              moveScreen(context, false, EyeTestScreen());
+            },
+            child: ListTile(
+              leading: Icon(
+                Icons.newspaper,
                 color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.w200,
               ),
-            ),
-          ),
-          Divider(
-            height: 0.5,
-            thickness: 0.6,
-            color: Colors.white,
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.newspaper,
-              color: Colors.white,
-            ),
-            title: Text(
-              'Eye Test',
-              style: GoogleFonts.poppins(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.w200,
+              title: Text(
+                'Eye Test',
+                style: GoogleFonts.poppins(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w200,
+                ),
               ),
             ),
           ),

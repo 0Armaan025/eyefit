@@ -11,6 +11,7 @@ class SplashScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: Colors.blue[200],
       body: SingleChildScrollView(
         child: SafeArea(
           child: Container(
@@ -24,7 +25,7 @@ class SplashScreen extends StatelessWidget {
                 const SizedBox(height: 200),
                 Center(
                   child: Text(
-                    'EYE-TRACKER',
+                    'EyeFit',
                     style: GoogleFonts.poppins(
                       fontSize: 32,
                       fontWeight: FontWeight.w500,
@@ -34,7 +35,7 @@ class SplashScreen extends StatelessWidget {
                 const SizedBox(height: 0),
                 Center(
                   child: Text(
-                    'Track your eyes!',
+                    'Keep your eyes fit!',
                     style: GoogleFonts.poppins(
                       fontSize: 22,
                       fontWeight: FontWeight.w300,

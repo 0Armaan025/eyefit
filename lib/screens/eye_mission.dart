@@ -165,7 +165,7 @@ class EyeMissionScreen extends StatelessWidget {
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [HexColor("#519e09"), HexColor("#408500")],
+                        colors: [HexColor("#de2663"), HexColor("#ab001c")],
                       ),
                       borderRadius: BorderRadius.circular(30),
                       border: Border.all(
