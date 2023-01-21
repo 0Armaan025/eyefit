@@ -18,7 +18,7 @@ class SplashScreen extends StatelessWidget {
             width: double.infinity,
             height: size.height * 0.95,
             decoration: BoxDecoration(
-              color: HexColor("#fffffe"),
+              color: Colors.blue[200],
             ),
             child: Column(
               children: [
@@ -65,7 +65,7 @@ class SplashScreen extends StatelessWidget {
                         height: size.height * 0.06,
                         decoration: BoxDecoration(
                           color: HexColor("#6246ea"),
-                          borderRadius: BorderRadius.circular(22),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         child: Text(
                           'CONTINUE ->',
