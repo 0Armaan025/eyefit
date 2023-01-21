@@ -82,25 +82,6 @@ class MyDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(
-              Icons.center_focus_strong_outlined,
-              color: Colors.white,
-            ),
-            title: Text(
-              'Eyes Misson',
-              style: GoogleFonts.poppins(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.w200,
-              ),
-            ),
-          ),
-          Divider(
-            height: 0.5,
-            thickness: 0.6,
-            color: Colors.white,
-          ),
-          ListTile(
-            leading: Icon(
               Icons.question_answer_outlined,
               color: Colors.white,
             ),

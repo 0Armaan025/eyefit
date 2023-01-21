@@ -1,4 +1,5 @@
 import 'package:eyefit/constants/constants.dart';
+import 'package:eyefit/screens/plan_screen.dart';
 import 'package:eyefit/widgets/exercise.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -158,20 +159,25 @@ class HomeScreen extends StatelessWidget {
                       const SizedBox(
                         height: 25,
                       ),
-                      Container(
-                        width: double.infinity,
-                        margin: const EdgeInsets.symmetric(
-                          horizontal: 70,
-                        ),
-                        alignment: Alignment.center,
-                        child: Text(
-                          'Make a plan',
-                          style: GoogleFonts.lato(color: Colors.white),
-                        ),
-                        height: size.height * 0.05,
-                        decoration: BoxDecoration(
-                          color: HexColor("#08024a"),
-                          borderRadius: BorderRadius.circular(10),
+                      InkWell(
+                        onTap: () {
+                          moveScreen(context, false, PlanMakerScreen());
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: 70,
+                          ),
+                          alignment: Alignment.center,
+                          child: Text(
+                            'Make a plan',
+                            style: GoogleFonts.lato(color: Colors.white),
+                          ),
+                          height: size.height * 0.05,
+                          decoration: BoxDecoration(
+                            color: HexColor("#08024a"),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
                         ),
                       ),
                     ],
