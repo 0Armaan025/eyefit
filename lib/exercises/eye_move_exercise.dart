@@ -7,15 +7,15 @@ import 'package:text_to_speech/text_to_speech.dart';
 
 import '../constants/my_drawer.dart';
 
-class PalmExercise extends StatefulWidget {
-  const PalmExercise({Key? key}) : super(key: key);
+class EyeMovingExercise extends StatefulWidget {
+  const EyeMovingExercise({Key? key}) : super(key: key);
 
   @override
-  State<PalmExercise> createState() => _PalmExerciseState();
+  State<EyeMovingExercise> createState() => _EyeMovingExerciseState();
 }
 
-class _PalmExerciseState extends State<PalmExercise> {
-  int seconds = 30;
+class _EyeMovingExerciseState extends State<EyeMovingExercise> {
+  int seconds = 150;
   Timer? timer;
 
   void decreaseTime() {
@@ -36,7 +36,7 @@ class _PalmExerciseState extends State<PalmExercise> {
 
   void stopTimer() {
     setState(() {
-      seconds = 30;
+      seconds = 150;
     });
     timer?.cancel();
   }
@@ -47,13 +47,12 @@ class _PalmExerciseState extends State<PalmExercise> {
     super.initState();
     final tts = TextToSpeech();
     tts.speak(
-        'You need to rub your palms for 30 seconds and put them over your eyes, but hey! make sure you don\'t harm your eyes!, doing this exercise daily will improve your vision');
+        'You need to move your eyes to the extreme positions, don\'t try to push the limits! this will help you to recover from eye redness which is swollen eye muscles and veins plus it increases your eye\'s strength');
   }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
     return Scaffold(
       extendBodyBehindAppBar: true,
       extendBody: true,
@@ -87,14 +86,16 @@ class _PalmExerciseState extends State<PalmExercise> {
                 const SizedBox(
                   height: 30,
                 ),
-                Text(
-                  'Palm Exercise',
-                  style: GoogleFonts.poppins(
-                    color: Colors.white,
-                    fontSize: 32,
+                Center(
+                  child: Text(
+                    'Eye Moving Exercise',
+                    style: GoogleFonts.poppins(
+                      color: Colors.white,
+                      fontSize: 28,
+                    ),
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 Center(
                   child: Container(
                     width: size.width * 0.6,
@@ -103,43 +104,41 @@ class _PalmExerciseState extends State<PalmExercise> {
                       borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(
                         image: NetworkImage(
-                            'https://img.freepik.com/premium-vector/ashamed-disappointed-man-covering-his-face-flat-vector-illustration-isolated_181313-1585.jpg?w=2000'),
+                            'https://thumbs.dreamstime.com/b/eye-exercise-movement-eyes-relaxation-eyeball-eyelash-brow-isolated-vector-illustration-cartoon-style-144977529.jpg'),
                         fit: BoxFit.cover,
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+                const SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 18.0),
                   child: Center(
                     child: Text(
-                      'You need to rub your palms for 30 seconds and put them over your eyes, but hey! make sure you don\'t harm your eyes!, doing this exercise daily will improve your vision',
+                      'You need to move your eyes to the extreme positions, don\'t try to push the limits! this will help you to recover from eye redness which is swollen eye muscles and veins plus it increases your eye\'s strength, you need to do this daily for or 150 seconds per time',
                       style: GoogleFonts.lato(
                           color: Colors.grey[200],
-                          fontSize: 16,
+                          fontSize: 12,
                           fontWeight: FontWeight.w400),
                       textAlign: TextAlign.center,
                     ),
                   ),
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 20,
                 ),
                 SizedBox(
-                  height: 100,
-                  width: 100,
+                  height: 120,
+                  width: 120,
                   child: Stack(
                     fit: StackFit.expand,
                     children: [
                       CircularProgressIndicator(
-                        value: seconds / 30,
+                        value: seconds / 150,
                         valueColor: AlwaysStoppedAnimation(
                           Colors.white,
                         ),
-                        strokeWidth: 12,
+                        strokeWidth: 10,
                         backgroundColor: Colors.greenAccent,
                       ),
                       Center(
@@ -156,7 +155,7 @@ class _PalmExerciseState extends State<PalmExercise> {
                                       '$seconds',
                                       style: GoogleFonts.poppins(
                                         color: Colors.white,
-                                        fontSize: 30,
+                                        fontSize: 36,
                                       ),
                                     ),
                                   ),
@@ -225,6 +224,9 @@ class _PalmExerciseState extends State<PalmExercise> {
                       borderRadius: BorderRadius.circular(25),
                     ),
                   ),
+                ),
+                const SizedBox(
+                  height: 2,
                 ),
               ],
             ),

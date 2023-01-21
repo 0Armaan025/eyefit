@@ -63,11 +63,11 @@ class MyDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(
-              Icons.pattern_sharp,
+              Icons.center_focus_strong_outlined,
               color: Colors.white,
             ),
             title: Text(
-              'My Progress',
+              'Eyes Misson',
               style: GoogleFonts.poppins(
                 color: Colors.white,
                 fontSize: 16,
@@ -101,11 +101,11 @@ class MyDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(
-              Icons.remove_red_eye_outlined,
+              Icons.question_answer_outlined,
               color: Colors.white,
             ),
             title: Text(
-              'Eye Exercises',
+              'Ask or share with others',
               style: GoogleFonts.poppins(
                 color: Colors.white,
                 fontSize: 16,
@@ -120,11 +120,11 @@ class MyDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(
-              Icons.games,
+              Icons.leaderboard,
               color: Colors.white,
             ),
             title: Text(
-              'Eye Games',
+              'Leaderboard',
               style: GoogleFonts.poppins(
                 color: Colors.white,
                 fontSize: 16,

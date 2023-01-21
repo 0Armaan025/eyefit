@@ -1,5 +1,7 @@
 import 'package:eyefit/constants/constants.dart';
 import 'package:eyefit/exercises/blinking_exercise.dart';
+import 'package:eyefit/exercises/eye_move_exercise.dart';
+import 'package:eyefit/exercises/palm_exercise.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -18,6 +20,10 @@ class Exercise extends StatelessWidget {
       onTap: () {
         if (exerciseText == "Blinking Exercise") {
           moveScreen(context, false, BlinkingExercise());
+        } else if (exerciseText == "Palm Exercise") {
+          moveScreen(context, false, PalmExercise());
+        } else {
+          moveScreen(context, false, EyeMovingExercise());
         }
       },
       child: Container(

@@ -1,9 +1,11 @@
+import 'package:eyefit/constants/constants.dart';
 import 'package:eyefit/widgets/exercise.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 import '../constants/my_drawer.dart';
+import 'eye_mission.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -95,26 +97,31 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(
                   height: 25,
                 ),
-                Container(
-                  padding: const EdgeInsets.all(15),
-                  width: double.infinity,
-                  height: size.height * 0.2,
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage(
-                          'https://images.unsplash.com/photo-1524088484081-4ca7e08e3e19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=491&q=80'),
-                      fit: BoxFit.cover,
+                InkWell(
+                  onTap: () {
+                    moveScreen(context, false, EyeMissionScreen());
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(15),
+                    width: double.infinity,
+                    height: size.height * 0.2,
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage(
+                            'https://images.unsplash.com/photo-1524088484081-4ca7e08e3e19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=491&q=80'),
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: BorderRadius.circular(22),
                     ),
-                    borderRadius: BorderRadius.circular(22),
-                  ),
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'OUR EYES\nMISSION!',
-                    textAlign: TextAlign.start,
-                    style: GoogleFonts.roboto(
-                      color: Colors.white,
-                      fontSize: 22,
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'OUR EYES\nMISSION!',
+                      textAlign: TextAlign.start,
+                      style: GoogleFonts.roboto(
+                        color: Colors.white,
+                        fontSize: 22,
+                      ),
                     ),
                   ),
                 ),
@@ -211,12 +218,12 @@ class HomeScreen extends StatelessWidget {
                           exerciseText: 'Blinking Exercise',
                         ),
                         Exercise(
-                          exerciseText: 'Palm exercise',
+                          exerciseText: 'Palm Exercise',
                           image:
                               'https://plus.unsplash.com/premium_photo-1669532597169-90e42c3e5dcc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cnViYmluZyUyMGV5ZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60',
                         ),
                         Exercise(
-                          exerciseText: 'Eye moving exercise',
+                          exerciseText: 'Eye moving Exercise',
                           image:
                               'https://images.unsplash.com/photo-1524499982521-1ffd58dd89ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8ZXllcyUyMHJpZ2h0JTIwYW5kJTIwbGVmdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60',
                         ),
