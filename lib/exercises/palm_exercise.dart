@@ -22,7 +22,7 @@ class _PalmExerciseState extends State<PalmExercise> {
   Timer? timer;
 
   void decreaseTime() {
-    timer = Timer.periodic(Duration(milliseconds: 20), (timer) {
+    timer = Timer.periodic(Duration(milliseconds: 1000), (timer) {
       setState(() {
         if (seconds > 0) {
           seconds--;

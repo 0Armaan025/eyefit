@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -20,13 +21,18 @@ class MeditationScreen extends StatefulWidget {
 class _MeditationScreenState extends State<MeditationScreen> {
   int seconds = 600;
   Timer? timer;
+  final player = AudioPlayer();
 
   void decreaseTime() {
-    timer = Timer.periodic(Duration(milliseconds: 20), (timer) {
+    timer = Timer.periodic(Duration(milliseconds: 1000), (timer) {
+      player.play(
+        AssetSource('sound.mp3'),
+      );
       setState(() {
         if (seconds > 0) {
           seconds--;
         } else {
+          player.stop();
           final tts = TextToSpeech();
           String text =
               "Congratulations!, number of meditations done has been increased!";
@@ -43,6 +49,7 @@ class _MeditationScreenState extends State<MeditationScreen> {
   }
 
   void stopTimer() {
+    player.stop();
     setState(() {
       seconds = 600;
     });

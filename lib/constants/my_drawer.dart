@@ -2,11 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eyefit/constants/constants.dart';
 import 'package:eyefit/screens/eye_mission.dart';
 import 'package:eyefit/screens/home_screen.dart';
+import 'package:eyefit/screens/profile_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+import '../screens/auth/login_screen.dart';
 import '../screens/eye_test.dart';
 import '../screens/meditation_screen.dart';
 
@@ -151,22 +153,52 @@ class _MyDrawerState extends State<MyDrawer> {
             thickness: 0.6,
             color: Colors.white,
           ),
-          ListTile(
-            leading: Icon(
-              Icons.person,
-              color: Colors.white,
-            ),
-            title: Text(
-              'My Profile',
-              style: GoogleFonts.poppins(
+          InkWell(
+            onTap: () {
+              moveScreen(context, false, ProfileScreen());
+            },
+            child: ListTile(
+              leading: Icon(
+                Icons.person,
                 color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.w200,
+              ),
+              title: Text(
+                'My Profile',
+                style: GoogleFonts.poppins(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w200,
+                ),
               ),
             ),
           ),
           Divider(
-            height: 0.5,
+            height: 1,
+            thickness: 0.6,
+            color: Colors.white,
+          ),
+          InkWell(
+            onTap: () {
+              FirebaseAuth.instance.signOut();
+              moveScreen(context, true, LoginScreen());
+            },
+            child: ListTile(
+              leading: Icon(
+                Icons.logout,
+                color: Colors.white,
+              ),
+              title: Text(
+                'Logout',
+                style: GoogleFonts.poppins(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w200,
+                ),
+              ),
+            ),
+          ),
+          Divider(
+            height: 1,
             thickness: 0.6,
             color: Colors.white,
           ),
