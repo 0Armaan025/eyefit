@@ -1,11 +1,19 @@
+import 'package:firebase_auth/firebase_auth.dart';
+
+import 'auth/login_screen.dart';
 import 'home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -47,8 +55,11 @@ class SplashScreen extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => HomeScreen()));
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) =>
+                            FirebaseAuth.instance.currentUser != null
+                                ? HomeScreen()
+                                : LoginScreen()));
                   },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 38.0),

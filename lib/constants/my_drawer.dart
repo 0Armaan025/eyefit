@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eyefit/constants/constants.dart';
 import 'package:eyefit/screens/eye_mission.dart';
 import 'package:eyefit/screens/home_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -8,8 +10,20 @@ import 'package:hexcolor/hexcolor.dart';
 import '../screens/eye_test.dart';
 import '../screens/meditation_screen.dart';
 
-class MyDrawer extends StatelessWidget {
+class MyDrawer extends StatefulWidget {
   const MyDrawer({Key? key}) : super(key: key);
+
+  @override
+  State<MyDrawer> createState() => _MyDrawerState();
+}
+
+class _MyDrawerState extends State<MyDrawer> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    // getData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +46,8 @@ class MyDrawer extends StatelessWidget {
                   HexColor("#200080"),
                 ]),
               ),
-              accountName: Text('Armaan'),
-              accountEmail: Text('armaan33000@gmail.com'),
+              accountName: Text('$name'),
+              accountEmail: Text('$email'),
               currentAccountPicture: CircleAvatar(
                 backgroundImage: NetworkImage(
                   'https://images.unsplash.com/photo-1474533410427-a23da4fd49d0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fGV5ZXMlMjByaWdodCUyMGFuZCUyMGxlZnR8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60',

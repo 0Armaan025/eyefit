@@ -1,6 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:eyefit/screens/auth/login_screen.dart';
+import 'package:eyefit/screens/home_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+
+import '../../constants/constants.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -10,8 +16,30 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passController = TextEditingController();
+
+  void registerUser(BuildContext context) {
+    try {
+      FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: _emailController.text, password: _passController.text);
+
+      FirebaseFirestore.instance
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser?.uid ?? '')
+          .set({
+        "name": _nameController.text,
+        "email": _emailController.text,
+        "exercise": 0,
+        "meditation": 0
+      });
+      moveScreen(context, true, HomeScreen());
+    } catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.toString())));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +105,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    elevation: 2.0,
+                    elevation: 0.0,
                     child: Container(
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
@@ -95,7 +123,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 18.0),
                             child: TextFormField(
-                              controller: _emailController,
+                              controller: _nameController,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
@@ -139,6 +167,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 18.0),
                             child: TextFormField(
+                              obscureText: true,
                               controller: _passController,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
@@ -161,25 +190,48 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
                 const SizedBox(height: 30),
-                Center(
-                  child: Container(
-                    width: 250,
-                    height: 50,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          HexColor("#b80656"),
-                          HexColor("d62977"),
-                        ],
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Text('Register',
+                Container(
+                  width: double.infinity,
+                  margin: const EdgeInsets.only(
+                    right: 15,
+                  ),
+                  alignment: Alignment.centerRight,
+                  child: InkWell(
+                    onTap: () {
+                      moveScreen(context, true, LoginScreen());
+                    },
+                    child: Text('Already registered?',
                         style: GoogleFonts.poppins(
-                          color: Colors.white,
-                          fontSize: 22,
-                        )),
+                            color: Colors.white, fontSize: 18)),
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Center(
+                  child: InkWell(
+                    onTap: () {
+                      registerUser(context);
+                    },
+                    child: Container(
+                      width: 250,
+                      height: 50,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            HexColor("#b80656"),
+                            HexColor("d62977"),
+                          ],
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text('Register',
+                          style: GoogleFonts.poppins(
+                            color: Colors.white,
+                            fontSize: 22,
+                          )),
+                    ),
                   ),
                 ),
               ],

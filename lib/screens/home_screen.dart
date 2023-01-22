@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eyefit/constants/constants.dart';
 import 'package:eyefit/screens/plan_screen.dart';
 import 'package:eyefit/widgets/exercise.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -8,8 +10,33 @@ import 'package:hexcolor/hexcolor.dart';
 import '../constants/my_drawer.dart';
 import 'eye_mission.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  void getData() async {
+    final data = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser?.uid ?? '')
+        .get()
+        .then((DocumentSnapshot snapshot) async {
+      name = snapshot.get('name');
+      email = snapshot.get('email');
+      exercise = snapshot.get('exercise');
+      meditation = snapshot.get('meditation');
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getData();
+  }
 
   @override
   Widget build(BuildContext context) {

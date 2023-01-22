@@ -1,6 +1,11 @@
+import 'package:eyefit/screens/auth/register_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+
+import '../../constants/constants.dart';
+import '../home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -15,6 +20,17 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    void loginUsesr(BuildContext context) {
+      try {
+        FirebaseAuth.instance.signInWithEmailAndPassword(
+            email: _emailController.text, password: _passController.text);
+        moveScreen(context, true, HomeScreen());
+      } catch (e) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text(e.toString())));
+      }
+    }
+
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
@@ -77,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    elevation: 2.0,
+                    elevation: 0.0,
                     child: Container(
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
@@ -139,25 +155,46 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 const SizedBox(height: 30),
-                Center(
-                  child: Container(
-                    width: 250,
-                    height: 50,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          HexColor("#b80656"),
-                          HexColor("d62977"),
-                        ],
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Text('Login',
+                Container(
+                  width: double.infinity,
+                  margin: const EdgeInsets.only(
+                    right: 15,
+                  ),
+                  alignment: Alignment.centerRight,
+                  child: InkWell(
+                    onTap: () {
+                      moveScreen(context, true, RegisterScreen());
+                    },
+                    child: Text('New?',
                         style: GoogleFonts.poppins(
-                          color: Colors.white,
-                          fontSize: 22,
-                        )),
+                            color: Colors.white, fontSize: 18)),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Center(
+                  child: InkWell(
+                    onTap: () {
+                      loginUsesr(context);
+                    },
+                    child: Container(
+                      width: 250,
+                      height: 50,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            HexColor("#b80656"),
+                            HexColor("d62977"),
+                          ],
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text('Login',
+                          style: GoogleFonts.poppins(
+                            color: Colors.white,
+                            fontSize: 22,
+                          )),
+                    ),
                   ),
                 ),
               ],

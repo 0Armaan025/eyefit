@@ -11,3 +11,8 @@ void moveScreen(BuildContext context, bool isPushReplacement, Widget screen) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => screen));
   }
 }
+
+String name = "";
+String email = "";
+int meditation = 0;
+int exercise = 0;

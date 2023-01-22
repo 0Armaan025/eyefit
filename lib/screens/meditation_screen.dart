@@ -1,10 +1,13 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:text_to_speech/text_to_speech.dart';
 
+import '../constants/constants.dart';
 import '../constants/my_drawer.dart';
 
 class MeditationScreen extends StatefulWidget {
@@ -19,7 +22,7 @@ class _MeditationScreenState extends State<MeditationScreen> {
   Timer? timer;
 
   void decreaseTime() {
-    timer = Timer.periodic(Duration(milliseconds: 1000), (timer) {
+    timer = Timer.periodic(Duration(milliseconds: 20), (timer) {
       setState(() {
         if (seconds > 0) {
           seconds--;
@@ -27,6 +30,11 @@ class _MeditationScreenState extends State<MeditationScreen> {
           final tts = TextToSpeech();
           String text =
               "Congratulations!, number of meditations done has been increased!";
+          meditation = meditation + 1;
+          FirebaseFirestore.instance
+              .collection('users')
+              .doc(FirebaseAuth.instance.currentUser?.uid ?? '')
+              .update({"meditation": meditation});
           tts.speak(text);
           stopTimer();
         }

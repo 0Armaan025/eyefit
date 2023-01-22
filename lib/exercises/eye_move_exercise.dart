@@ -1,10 +1,13 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:text_to_speech/text_to_speech.dart';
 
+import '../constants/constants.dart';
 import '../constants/my_drawer.dart';
 
 class EyeMovingExercise extends StatefulWidget {
@@ -25,8 +28,13 @@ class _EyeMovingExerciseState extends State<EyeMovingExercise> {
           seconds--;
         } else {
           final tts = TextToSpeech();
+          exercise = exercise + 1;
+          FirebaseFirestore.instance
+              .collection('users')
+              .doc(FirebaseAuth.instance.currentUser?.uid ?? '')
+              .update({"exercise": exercise});
           String text =
-              "Congratulations!, number of exercises has been increased! you have the chance to be the top 1 on the leaderboard";
+              "Congratulations!, number of exercises has been increased! you have the chance to make your eyes new again!";
           tts.speak(text);
           stopTimer();
         }
