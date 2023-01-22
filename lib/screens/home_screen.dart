@@ -111,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           top: 6.0,
                         ),
                         child: Text(
-                          '20 January, 2023',
+                          '22 January, 2023',
                           style: GoogleFonts.lato(
                             color: Colors.white,
                             fontSize: 19,

@@ -78,14 +78,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text('$name',
+                            Text('Armaan',
                                 style: GoogleFonts.poppins(
                                   color: Colors.white,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 )),
                             const SizedBox(height: 5),
-                            Text('$email',
+                            Text('armaan33000@gmail.com',
                                 style: GoogleFonts.poppins(
                                   color: Colors.deepPurple[100],
                                   fontSize: 14,

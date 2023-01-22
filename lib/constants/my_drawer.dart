@@ -48,8 +48,8 @@ class _MyDrawerState extends State<MyDrawer> {
                   HexColor("#200080"),
                 ]),
               ),
-              accountName: Text('$name'),
-              accountEmail: Text('$email'),
+              accountName: Text('Armaan'),
+              accountEmail: Text('armaan33000@gmail.com'),
               currentAccountPicture: CircleAvatar(
                 backgroundImage: NetworkImage(
                   'https://images.unsplash.com/photo-1474533410427-a23da4fd49d0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fGV5ZXMlMjByaWdodCUyMGFuZCUyMGxlZnR8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60',
